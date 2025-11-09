@@ -3,10 +3,10 @@
   "version": "2.0.0",
   "description": "Aplicación web interactiva para la creación y gestión de odontogramas dentales",
   "main": "index.html",
-  "homepage": "https://xpertik.github.io/odontograma",
+  "homepage": "https://jhonatanmt83.github.io/odontograma",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xpertik/odontograma.git"
+    "url": "https://github.com/jhonatanmt83/odontograma.git"
   },
   "scripts": {
     "start": "npx http-server -p 8080 -o",

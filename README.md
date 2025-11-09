@@ -2,13 +2,13 @@
 
 Aplicación web interactiva para la creación y gestión de odontogramas dentales utilizando HTML5 Canvas.
 
-[![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://xpertik.github.io/odontograma)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/xpertik/odontograma)
+[![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://jhonatanmt83.github.io/odontograma)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/jhonatanmt83/odontograma)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 ## 🌐 Demo en Vivo
 
-**[Ver Demo →](https://xpertik.github.io/odontograma)**
+**[Ver Demo →](https://jhonatanmt83.github.io/odontograma)**
 
 Prueba la aplicación directamente en tu navegador sin necesidad de instalación.
 
