@@ -125,10 +125,10 @@ odontograma/
 
 - **HTML5 Canvas**: Para el renderizado gráfico del odontograma
 - **JavaScript ES6+**: Lógica de la aplicación con patrones modernos
-- **jQuery 3.7.1**: Manipulación del DOM y utilidades
-- **jQuery UI 1.13.2**: Componentes de interfaz (botones de radio personalizados)
+- **jQuery 3.7.1**: Manipulación del DOM y utilidades (CDN)
+- **jQuery UI 1.13.2**: Componentes de interfaz (botones de radio personalizados) (CDN)
 - **localStorage**: Almacenamiento persistente de datos en el navegador
-- **npm**: Gestión de dependencias
+- **npm**: Gestión de dependencias (solo para desarrollo local)
 
 ## Arquitectura Técnica
 
