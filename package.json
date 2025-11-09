@@ -1,0 +1,32 @@
+{
+  "name": "odontograma-xpertik",
+  "version": "2.0.0",
+  "description": "Aplicación web interactiva para la creación y gestión de odontogramas dentales",
+  "main": "index.html",
+  "homepage": "https://xpertik.github.io/odontograma",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xpertik/odontograma.git"
+  },
+  "scripts": {
+    "start": "npx http-server -p 8080 -o",
+    "dev": "npx http-server -p 8080 -o",
+    "deploy": "npm install && echo 'Ready for GitHub Pages deployment'"
+  },
+  "keywords": [
+    "odontograma",
+    "dental",
+    "chart",
+    "canvas",
+    "healthcare"
+  ],
+  "author": "Xpertik",
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "jquery-ui-dist": "^1.13.2"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

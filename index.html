@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aplicación web interactiva para la creación y gestión de odontogramas dentales">
+    <meta name="author" content="Xpertik">
+    <title>Odontograma Xpertik</title>
+
+    <!-- jQuery UI CSS -->
+    <link type="text/css" href="node_modules/jquery-ui-dist/jquery-ui.min.css" rel="stylesheet">
+
+    <!-- Estilos principales -->
+    <link type="text/css" href="assets/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>Odontograma Xpertik</h1>
+        </header>
+
+        <main>
+            <!-- Controles de acción -->
+            <section class="controls-section">
+                <div id="action-controls">
+                    <input type="radio" id="action-fracture" name="accion" value="fractura" checked="checked">
+                    <label for="action-fracture">Fractura</label>
+
+                    <input type="radio" id="action-restoration" name="accion" value="restauracion">
+                    <label for="action-restoration">Restauración</label>
+
+                    <input type="radio" id="action-delete" name="accion" value="borrar">
+                    <label for="action-delete">Borrar</label>
+
+                    <input type="radio" id="action-extraction" name="accion" value="extraccion">
+                    <label for="action-extraction">Extracción</label>
+
+                    <input type="radio" id="action-bridge" name="accion" value="puente">
+                    <label for="action-bridge">Puente</label>
+                </div>
+
+                <!-- Opciones de borrado (ocultas por defecto) -->
+                <div id="delete-options">
+                    <input type="radio" id="delete-section" name="seccion" value="seccion" checked="checked">
+                    <label for="delete-section">Sección</label>
+
+                    <input type="radio" id="delete-tooth" name="seccion" value="diente">
+                    <label for="delete-tooth">Diente</label>
+                </div>
+            </section>
+
+            <!-- Canvas del Odontograma -->
+            <section id="odontograma-container">
+                <!-- Canvas base: contornos y números de dientes -->
+                <canvas id="canvas-base" width="810" height="300"></canvas>
+
+                <!-- Canvas de datos: marcaciones (fracturas, restauraciones, extracciones) -->
+                <canvas id="canvas-data" width="810" height="300"></canvas>
+
+                <!-- Canvas de resaltado: hover e interacción -->
+                <canvas id="canvas-highlight" width="810" height="300"></canvas>
+
+                <!-- Canvas de puentes: conexiones entre dientes -->
+                <canvas id="canvas-bridge" width="810" height="300"></canvas>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Odontograma Xpertik &copy; 2025 - Versión 2.0</p>
+            <p>Desarrollado por <strong>Xpertik</strong></p>
+        </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="node_modules/jquery-ui-dist/jquery-ui.min.js"></script>
+
+    <!-- Módulos de la aplicación (en orden de dependencia) -->
+    <script src="assets/js/modules/config.js"></script>
+    <script src="assets/js/modules/storage.js"></script>
+    <script src="assets/js/modules/odontograma.js"></script>
+    <script src="assets/js/modules/ui.js"></script>
+
+    <!-- Aplicación principal -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>

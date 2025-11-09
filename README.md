@@ -1,10 +1,22 @@
-# Odontograma FTD
+# Odontograma Xpertik
 
 Aplicación web interactiva para la creación y gestión de odontogramas dentales utilizando HTML5 Canvas.
+
+[![Demo](https://img.shields.io/badge/Demo-Live-brightgreen)](https://xpertik.github.io/odontograma)
+[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](https://github.com/xpertik/odontograma)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
+## 🌐 Demo en Vivo
+
+**[Ver Demo →](https://xpertik.github.io/odontograma)**
+
+Prueba la aplicación directamente en tu navegador sin necesidad de instalación.
 
 ## Descripción
 
 Este proyecto es una herramienta digital para profesionales de la odontología que permite registrar y visualizar el estado dental de los pacientes mediante un odontograma interactivo. La aplicación permite marcar diferentes condiciones dentales en una representación visual de 32 dientes.
+
+**Versión 2.0** - Actualizado en 2025 con arquitectura modular, librerías actualizadas y mejores prácticas de desarrollo.
 
 ## Características
 
@@ -26,15 +38,35 @@ La aplicación permite registrar las siguientes condiciones dentales:
 - **Persistencia de datos**: Las marcaciones se guardan automáticamente en el navegador (localStorage)
 - **Historial temporal**: Sistema de timestamps para gestionar múltiples marcaciones
 
-## Requisitos
+## Instalación
 
+### Requisitos Previos
+
+- Node.js y npm instalados (para gestión de dependencias)
 - Navegador web moderno con soporte para HTML5 Canvas
 - JavaScript habilitado
-- No requiere instalación ni servidor
+
+### Pasos de Instalación
+
+1. Clonar o descargar el repositorio
+
+2. Instalar las dependencias:
+```bash
+npm install
+```
+
+3. Abrir el proyecto:
+```bash
+npm start
+```
+
+Esto abrirá automáticamente la aplicación en tu navegador en `http://localhost:8080`
+
+Alternativamente, puedes abrir directamente el archivo `index.html` en tu navegador.
 
 ## Uso
 
-1. Abrir el archivo `odontograma.html` en cualquier navegador web
+1. Abrir el archivo `index.html` en cualquier navegador web
 2. Seleccionar el tipo de acción deseada (Fractura, Restauración, Borrar, Extracción o Puente)
 3. Hacer clic en la sección del diente correspondiente
 4. Las marcaciones se guardan automáticamente
@@ -66,35 +98,87 @@ La aplicación permite registrar las siguientes condiciones dentales:
 
 ```
 odontograma/
-├── odontograma.html          # Archivo principal de la aplicación
-├── js/
-│   ├── jquery-1.7.2.min.js           # jQuery 1.7.2
-│   └── jquery-ui-1.8.13.custom.min.js # jQuery UI 1.8.13
-├── css/
-│   └── custom-theme/
-│       ├── jquery-ui-1.8.13.custom.css # Estilos de jQuery UI
-│       └── images/                      # Recursos gráficos del tema
-└── cur438.cur                # Cursor personalizado
+├── index.html                    # Página principal
+├── package.json                  # Dependencias y scripts
+├── .gitignore                    # Archivos ignorados por git
+├── README.md                     # Este archivo
+├── assets/
+│   ├── css/
+│   │   ├── styles.css           # Estilos principales
+│   │   └── vendor/              # CSS de librerías externas
+│   ├── js/
+│   │   ├── app.js               # Punto de entrada de la aplicación
+│   │   ├── modules/
+│   │   │   ├── config.js        # Configuración y constantes
+│   │   │   ├── storage.js       # Manejo de localStorage
+│   │   │   ├── odontograma.js   # Funciones de renderizado
+│   │   │   └── ui.js            # Manejo de interacciones
+│   │   └── vendor/              # Librerías JS externas
+│   └── images/
+│       └── cur438.cur           # Cursor personalizado
+├── node_modules/                # Dependencias (generado por npm)
+├── css/                         # Archivos legacy (compatibilidad)
+└── js/                          # Archivos legacy (compatibilidad)
 ```
 
 ## Tecnologías Utilizadas
 
 - **HTML5 Canvas**: Para el renderizado gráfico del odontograma
-- **JavaScript**: Lógica de la aplicación y manejo de eventos
-- **jQuery 1.7.2**: Manipulación del DOM y utilidades
-- **jQuery UI 1.8.13**: Componentes de interfaz (botones de radio personalizados)
+- **JavaScript ES6+**: Lógica de la aplicación con patrones modernos
+- **jQuery 3.7.1**: Manipulación del DOM y utilidades
+- **jQuery UI 1.13.2**: Componentes de interfaz (botones de radio personalizados)
 - **localStorage**: Almacenamiento persistente de datos en el navegador
+- **npm**: Gestión de dependencias
 
 ## Arquitectura Técnica
 
-La aplicación utiliza un sistema de 4 capas de canvas superpuestas:
+### Sistema de Canvas por Capas
 
-1. **Capa Base**: Contornos y números de los dientes (1-32)
-2. **Capa de Datos**: Marcaciones de fracturas, restauraciones y extracciones
-3. **Capa de Interacción**: Resaltado visual al pasar el cursor
-4. **Capa de Puentes**: Conexiones entre dientes
+La aplicación utiliza un sistema de 4 capas de canvas superpuestas (z-index 1-4):
 
-Cada diente mide 40x40 píxeles y está dividido geométricamente en 5 secciones triangulares/cuadradas para permitir marcaciones precisas.
+1. **Canvas Base** (`myCanvas`): Contornos y números de los dientes (1-32)
+2. **Canvas de Datos** (`myCanvas2`): Marcaciones (fracturas, restauraciones, extracciones)
+3. **Canvas de Interacción** (`myCanvas3`): Resaltado visual al pasar el cursor (hover)
+4. **Canvas de Puentes** (`myCanvas4`): Conexiones entre dientes
+
+### Módulos JavaScript
+
+- **config.js**: Constantes de configuración (dimensiones, colores, códigos de acción)
+- **storage.js**: API para manejo de localStorage con patrón Module
+- **odontograma.js**: Funciones de renderizado en canvas
+- **ui.js**: Manejo de eventos e interacciones del usuario
+- **app.js**: Inicialización y orquestación de la aplicación
+
+### Patrones de Diseño
+
+- **Module Pattern**: Encapsulación de funcionalidades con API pública
+- **Separation of Concerns**: Separación clara entre datos, vista y lógica
+- **Event-Driven**: Sistema de eventos para interacciones del usuario
+
+## Funciones de Utilidad
+
+La aplicación expone dos funciones en la consola del navegador para desarrollo y depuración:
+
+```javascript
+// Exportar todas las marcaciones actuales
+exportOdontogramaData()
+
+// Importar marcaciones (restaurar un estado previo)
+importOdontogramaData(data)
+```
+
+## Scripts Disponibles
+
+```bash
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm start
+
+# Iniciar servidor (alias)
+npm run dev
+```
 
 ## Limitaciones Conocidas
 
@@ -103,6 +187,15 @@ Cada diente mide 40x40 píxeles y está dividido geométricamente en 5 secciones
 - No hay sistema de múltiples pacientes o historial clínico
 - La interfaz está optimizada para pantallas de escritorio
 
+## Roadmap Futuro
+
+- [ ] Exportación de datos a PDF
+- [ ] Sistema de múltiples pacientes
+- [ ] Sincronización con backend
+- [ ] Historial de cambios por paciente
+- [ ] Modo responsive para tablets y móviles
+- [ ] Soporte para odontograma infantil (20 dientes)
+
 ## Licencia
 
 Este proyecto es de código abierto para uso educativo y profesional.
@@ -110,6 +203,47 @@ Este proyecto es de código abierto para uso educativo y profesional.
 ## Contribuciones
 
 Las contribuciones son bienvenidas. Para mejoras o reportes de errores, por favor crear un issue en el repositorio.
+
+## Despliegue en GitHub Pages
+
+Este proyecto está configurado para desplegarse automáticamente en GitHub Pages. Para configurar tu propia instancia:
+
+1. **Fork o clona el repositorio** en tu cuenta de GitHub
+
+2. **Configura GitHub Pages:**
+   - Ve a Settings → Pages en tu repositorio
+   - En "Source", selecciona la rama `main` (o `master`)
+   - En "Folder", selecciona `/ (root)`
+   - Guarda los cambios
+
+3. **Espera unos minutos** y tu sitio estará disponible en:
+   ```
+   https://[tu-usuario].github.io/[nombre-repositorio]
+   ```
+
+4. **Actualiza el package.json** (opcional):
+   ```json
+   "homepage": "https://[tu-usuario].github.io/[nombre-repositorio]"
+   ```
+
+**Nota:** El archivo `.nojekyll` está incluido para asegurar que GitHub Pages procese correctamente todos los archivos.
+
+## Historial de Versiones
+
+### v2.0.0 (2025)
+- Actualización de jQuery 1.7.2 a 3.7.1
+- Actualización de jQuery UI 1.8.13 a 1.13.2
+- Reorganización modular del código JavaScript
+- Separación de responsabilidades (config, storage, renderer, ui)
+- Implementación de Module Pattern
+- Gestión de dependencias con npm
+- Mejoras en la estructura de archivos
+- CSS extraído a archivos separados
+- Documentación actualizada
+
+### v1.0.0 (2014)
+- Versión inicial del proyecto
+- Funcionalidades básicas de odontograma
 
 ---
 
