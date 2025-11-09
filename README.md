@@ -42,27 +42,28 @@ La aplicación permite registrar las siguientes condiciones dentales:
 
 ### Requisitos Previos
 
-- Node.js y npm instalados (para gestión de dependencias)
 - Navegador web moderno con soporte para HTML5 Canvas
 - JavaScript habilitado
+- Node.js y npm (opcional, solo para desarrollo local con servidor)
 
 ### Pasos de Instalación
 
+**Opción 1: Uso directo (recomendado)**
 1. Clonar o descargar el repositorio
+2. Abrir el archivo `index.html` directamente en tu navegador
 
-2. Instalar las dependencias:
+**Opción 2: Con servidor de desarrollo**
+1. Clonar o descargar el repositorio
+2. Instalar dependencias de desarrollo:
 ```bash
 npm install
 ```
-
-3. Abrir el proyecto:
+3. Iniciar servidor:
 ```bash
 npm start
 ```
 
 Esto abrirá automáticamente la aplicación en tu navegador en `http://localhost:8080`
-
-Alternativamente, puedes abrir directamente el archivo `index.html` en tu navegador.
 
 ## Uso
 
@@ -99,26 +100,25 @@ Alternativamente, puedes abrir directamente el archivo `index.html` en tu navega
 ```
 odontograma/
 ├── index.html                    # Página principal
-├── package.json                  # Dependencias y scripts
+├── package.json                  # Dependencias y scripts npm
 ├── .gitignore                    # Archivos ignorados por git
+├── .nojekyll                     # Configuración para GitHub Pages
 ├── README.md                     # Este archivo
 ├── assets/
 │   ├── css/
-│   │   ├── styles.css           # Estilos principales
-│   │   └── vendor/              # CSS de librerías externas
+│   │   └── styles.css           # Estilos principales
 │   ├── js/
 │   │   ├── app.js               # Punto de entrada de la aplicación
-│   │   ├── modules/
-│   │   │   ├── config.js        # Configuración y constantes
-│   │   │   ├── storage.js       # Manejo de localStorage
-│   │   │   ├── odontograma.js   # Funciones de renderizado
-│   │   │   └── ui.js            # Manejo de interacciones
-│   │   └── vendor/              # Librerías JS externas
+│   │   └── modules/
+│   │       ├── config.js        # Configuración y constantes
+│   │       ├── storage.js       # Manejo de localStorage
+│   │       ├── odontograma.js   # Funciones de renderizado
+│   │       └── ui.js            # Manejo de interacciones
 │   └── images/
 │       └── cur438.cur           # Cursor personalizado
-├── node_modules/                # Dependencias (generado por npm)
-├── css/                         # Archivos legacy (compatibilidad)
-└── js/                          # Archivos legacy (compatibilidad)
+├── node_modules/                # Dependencias npm (solo desarrollo local)
+├── css/                         # Archivos legacy (compatibilidad v1.0)
+└── js/                          # Archivos legacy (compatibilidad v1.0)
 ```
 
 ## Tecnologías Utilizadas
@@ -136,10 +136,10 @@ odontograma/
 
 La aplicación utiliza un sistema de 4 capas de canvas superpuestas (z-index 1-4):
 
-1. **Canvas Base** (`myCanvas`): Contornos y números de los dientes (1-32)
-2. **Canvas de Datos** (`myCanvas2`): Marcaciones (fracturas, restauraciones, extracciones)
-3. **Canvas de Interacción** (`myCanvas3`): Resaltado visual al pasar el cursor (hover)
-4. **Canvas de Puentes** (`myCanvas4`): Conexiones entre dientes
+1. **Canvas Base** (`canvas-base`): Contornos y números de los dientes (1-32)
+2. **Canvas de Datos** (`canvas-data`): Marcaciones (fracturas, restauraciones, extracciones)
+3. **Canvas de Resaltado** (`canvas-highlight`): Resaltado visual al pasar el cursor (hover)
+4. **Canvas de Puentes** (`canvas-bridge`): Conexiones entre dientes
 
 ### Módulos JavaScript
 
@@ -231,15 +231,17 @@ Este proyecto está configurado para desplegarse automáticamente en GitHub Page
 ## Historial de Versiones
 
 ### v2.0.0 (2025)
-- Actualización de jQuery 1.7.2 a 3.7.1
-- Actualización de jQuery UI 1.8.13 a 1.13.2
+- Actualización de jQuery 1.7.2 → 3.7.1
+- Actualización de jQuery UI 1.8.13 → 1.13.2
 - Reorganización modular del código JavaScript
 - Separación de responsabilidades (config, storage, renderer, ui)
 - Implementación de Module Pattern
+- Renombrado de IDs a nombres semánticos (canvas-base, action-controls, etc.)
+- Uso de librerías desde CDN para compatibilidad con GitHub Pages
 - Gestión de dependencias con npm
-- Mejoras en la estructura de archivos
 - CSS extraído a archivos separados
-- Documentación actualizada
+- Configuración para GitHub Pages con .nojekyll
+- Documentación completa actualizada
 
 ### v1.0.0 (2014)
 - Versión inicial del proyecto
